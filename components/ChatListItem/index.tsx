@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { ChatRoom } from "../../types";
@@ -23,8 +24,7 @@ const ChatListItem = (props: ChatListItemProps) => {
         </View>
       </View>
 
-      {/* <Text>{chatRoom.lastMessage.createdAt}</Text> */}
-      <Text style={styles.time}>Yesterday</Text>
+      <Text>{moment(chatRoom.lastMessage.createdAt).format('DD/MM/YYYY') }</Text>
     </View>
   );
 };

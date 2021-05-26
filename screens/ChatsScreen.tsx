@@ -1,8 +1,8 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import ChatListItem from "../components/ChatListItem";
 
-import chatRooms from '../data/ChatRooms'
+import chatRooms from "../data/ChatRooms";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
@@ -10,7 +10,12 @@ import { Text, View } from "../components/Themed";
 export default function ChatsScreen() {
   return (
     <View style={styles.container}>
-      <ChatListItem chatRoom={chatRooms[0]} />
+      <FlatList
+        style={styles.flatList}
+        data={chatRooms}
+        renderItem={({ item }) => <ChatListItem chatRoom={item} />}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
@@ -21,4 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  flatList: {
+    width: "100%",
+  }
 });
