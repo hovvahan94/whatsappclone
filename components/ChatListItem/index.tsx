@@ -3,21 +3,21 @@ import React from "react";
 import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
 import { ChatRoom } from "../../types";
 import styles from "./style";
-import {useNavigation} from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 
 export type ChatListItemProps = {
   chatRoom: ChatRoom;
 };
 
 const ChatListItem = (props: ChatListItemProps) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const { chatRoom } = props;
 
   const user = chatRoom.users[0];
 
   const onPressHandler = () => {
-    navigation.navigate('ChatRoom', {id: chatRoom.id, username: user.name})
-  }
+    navigation.navigate("ChatRoom", { id: chatRoom.id, username: user.name });
+  };
 
   return (
     <TouchableWithoutFeedback onPress={onPressHandler}>
