@@ -34,8 +34,6 @@ function App() {
         bypassCache: true,
       });
 
-      console.log(userInfo);
-
       if (userInfo) {
         const userData = await API.graphql(
           graphqlOperation(getUser, { id: userInfo.attributes.sub })
