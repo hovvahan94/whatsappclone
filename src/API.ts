@@ -1019,7 +1019,7 @@ export type ListMessagesQuery = {
   } | null,
 };
 
-export type MessagedByChatRoomQueryVariables = {
+export type MessagesByChatRoomQueryVariables = {
   chatRoomID?: string | null,
   createdAt?: ModelStringKeyConditionInput | null,
   sortDirection?: ModelSortDirection | null,
@@ -1028,8 +1028,8 @@ export type MessagedByChatRoomQueryVariables = {
   nextToken?: string | null,
 };
 
-export type MessagedByChatRoomQuery = {
-  messagedByChatRoom?:  {
+export type MessagesByChatRoomQuery = {
+  messagesByChatRoom?:  {
     __typename: "ModelMessageConnection",
     items?:  Array< {
       __typename: "Message",

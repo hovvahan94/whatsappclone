@@ -6,10 +6,10 @@ type User @model {
   chatRoomUser: [ChatRoomUser] @connection(keyName: "byUser", fields: ["id"])
 }
 
-type ChatRoomUser 
-@model 
-@key(name: "byUser", fields: ["userID", "chatRoomID"])
-@key(name: "byChatRoom", fields: ["chatRoomID", "userID"]) {
+type ChatRoomUser
+  @model
+  @key(name: "byUser", fields: ["userID", "chatRoomID"])
+  @key(name: "byChatRoom", fields: ["chatRoomID", "userID"]) {
   id: ID!
   userID: ID!
   chatRoomID: ID!
@@ -19,13 +19,18 @@ type ChatRoomUser
 
 type ChatRoom @model {
   id: ID!
-  chatRoomUsers: [ChatRoomUser] @connection(keyName: "byChatRoom", fields: ["id"])
+  chatRoomUsers: [ChatRoomUser]
+    @connection(keyName: "byChatRoom", fields: ["id"])
   messages: [Message] @connection(keyName: "byChatRoom", fields: ["id"])
 }
 
-type Message 
-@model
-@key(name: "byChatRoom", fields: ["chatRoomID", "createdAt"], queryField: "messagedByChatRoom") {
+type Message
+  @model
+  @key(
+    name: "byChatRoom",
+    fields: ["chatRoomID", "createdAt"],
+    queryField: "messagesByChatRoom"
+  ) {
   id: ID!
   createdAt: String!
   content: String!
