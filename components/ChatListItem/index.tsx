@@ -13,7 +13,7 @@ const ChatListItem = (props: ChatListItemProps) => {
   const navigation = useNavigation();
   const { chatRoom } = props;
 
-  const user = chatRoom.users[0];
+  const user = chatRoom.chatRoomUsers.items[0].user;
 
   const onPressHandler = () => {
     navigation.navigate("ChatRoom", { id: chatRoom.id, username: user.name });
@@ -28,13 +28,13 @@ const ChatListItem = (props: ChatListItemProps) => {
           <View style={styles.midContainer}>
             <Text style={styles.username}>{user.name}</Text>
             <Text style={styles.lastMessage}>
-              {chatRoom.lastMessage.content}
+              {chatRoom.lastMessage ? chatRoom.lastMessage.content : ""}
             </Text>
           </View>
         </View>
 
         <Text>
-          {moment(chatRoom.lastMessage.createdAt).format("DD/MM/YYYY")}
+          {moment(chatRoom.lastMessage && chatRoom.lastMessage.createdAt).format("DD/MM/YYYY")}
         </Text>
       </View>
     </TouchableWithoutFeedback>
